@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import Button from './Button'
 
 const messages = [
   'Learn React ⚛️',
@@ -15,14 +16,14 @@ const App = () => {
   return (
     <>
       <button
-        className="close"
+        className='close'
         onClick={() => setIsOpen(i => !i)}
       >
         &times;
       </button>
       {isOpen && (
-        <div className="steps">
-          <div className="numbers">
+        <div className='steps'>
+          <div className='numbers'>
             {/* <div className="active">1</div> */}
             {messages.map((_, index) => (
               <div
@@ -35,24 +36,26 @@ const App = () => {
             {/* <div className={step > 1 ? 'active' : ''}>2</div>
             <div className={step > 2 ? 'active' : ''}>3</div> */}
           </div>
-          <p className="message">
+          <p className='message'>
             Step: {step}: {messages[step - 1]}
           </p>
-          <div className="buttons">
-            <button
-              style={{ backgroundColor: '#7950f2', color: '#fff' }}
-              onClick={() => setStep(s => (s > 1 ? s - 1 : 1))}
+          <div className='buttons'>
+            <Button
+              bgColor='#7950f2'
+              color='#fff'
+              handleClick={() => setStep(s => (s > 1 ? s - 1 : 1))}
             >
-              Previous
-            </button>
-            <button
-              style={{ backgroundColor: '#7950f2', color: '#fff' }}
-              onClick={() =>
+              <span>👈🏻</span>Previous
+            </Button>
+            <Button
+              bgColor='#7950f2'
+              color='#fff'
+              handleClick={() =>
                 setStep(s => (s < messagesLength ? s + 1 : messagesLength))
               }
             >
-              Next
-            </button>
+              Next<span>👉🏻</span>
+            </Button>
           </div>
         </div>
       )}
